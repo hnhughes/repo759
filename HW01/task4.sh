@@ -4,4 +4,4 @@
 #SBATCH -J FirstSlurm
 #SBATCH -o FirstSlurm-%j.out -e FirstSlurm-%j.err
 
-hostname
+echo "Running on: $(hostname)"
