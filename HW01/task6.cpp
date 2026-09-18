@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     }
     std::printf("\n");
 
-    for (int i=N; i<=0; i--){
+    for (int i=N; i>=0; i--){
         std::cout << i << " ";
     }
     std::cout << "\n";
