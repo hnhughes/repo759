@@ -9,24 +9,16 @@
 
 g++ scan.cpp task1.cpp -Wall -O3 -std=c++17 -o task1
 
+rm -f timeresults.txt
+
 DATA_FILE=task1_data.csv
 echo "n,time_ms" > "$DATA_FILE"
  
-for k in $(seq 10 30); do
-    n=$((2 ** k))
-    echo "Running n = $n (2^$k)..."
- 
-    # Capture the program's stdout so we can pull the timing out of it
-    program_output=$(./task1 "$n")
- 
-    # The line looks like: "Scan function took 12.345 ms"
-    # Pull out the 4th whitespace-separated field, which is the number.
-    time_ms=$(./task1 "$n" | head -n 1)
- 
-    echo "$n,$time_ms" >> "$DATA_FILE"
+for exponent in {10..30}
+do
+    n=$((2**exponent))
+
+    time=$(./task1 $n | head -n 1)
+
+    echo "$n $time" >> results.txt
 done
- 
-echo "All runs complete. Data written to $DATA_FILE"
- 
-# Generate the plot
-python3 task1.py "$DATA_FILE" task1.pdf
