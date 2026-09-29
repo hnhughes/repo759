@@ -21,19 +21,23 @@ int main(int argc, char *argv[]){
         return 1;
     }
 
-    std::random_device rd;
-    std::mt19937 gen(rd()); //call the random device with rd and store it in gen using mt19937 to generate the rand
-    std::uniform_real_distribution<float> dist(-1.0f, 1.0f);    //set the distribution for the numbers to be generated
-    float *arr = new float[n];  //allocated an array of n floats at runtime
-    for (int i = 0; i < n; i++) {   //fill the array with random floats
-        arr[i] = dist(gen);
-    }
-
-    float *output = new float[n];   //Create the array to store the output
     // Provide some namespace shortcuts
     using std::cout;
     using std::chrono::high_resolution_clock;
     using std::chrono::duration; 
+    std::random_device rd;
+    std::mt19937 gen(rd()); //call the random device with rd and store it in gen using mt19937 to generate the rand
+    std::uniform_real_distribution<float> dist(-1.0f, 1.0f);    //set the distribution for the numbers to be generated
+    float *arr = new float[n];  //allocated an array of n floats at runtime
+    cout << "Input array: [";   //TEST LINE *******************************************************************
+    for (int i = 0; i < n; i++) {   //fill the array with random floats
+        arr[i] = dist(gen);
+        cout << " " << arr[i]; //TEST LINE *******************************************************************
+    }
+
+    cout << "]\n";  //TEST LINE *******************************************************************
+
+    float *output = new float[n];   //Create the array to store the output
     high_resolution_clock::time_point start;
     high_resolution_clock::time_point end;
     duration<double, std::milli> duration_ms;
