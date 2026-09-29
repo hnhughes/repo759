@@ -6,4 +6,4 @@
 #SBATCH -p instruction
 
 g++ scan.cpp task1.cpp -Wall -O3 -std=c++17 -o task1
-./task1 12
+./task1 100
