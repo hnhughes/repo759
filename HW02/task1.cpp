@@ -6,7 +6,7 @@
 #include <ratio>
 
 int main(int argc, char *argv[]){
-    //There should be one argument bayond the program name
+    //There should be one argument beyond the program name
     //If there isn't print out an error and exit
     if (argc != 2) {
         std::cerr << "Usage: " << argv[0] << " <n>\n";
@@ -29,13 +29,9 @@ int main(int argc, char *argv[]){
     std::mt19937 gen(rd()); //call the random device with rd and store it in gen using mt19937 to generate the rand
     std::uniform_real_distribution<float> dist(-1.0f, 1.0f);    //set the distribution for the numbers to be generated
     float *arr = new float[n];  //allocated an array of n floats at runtime
-    cout << "Input array: [";   //TEST LINE *******************************************************************
     for (int i = 0; i < n; i++) {   //fill the array with random floats
         arr[i] = dist(gen);
-        cout << " " << arr[i]; //TEST LINE *******************************************************************
     }
-
-    cout << "]\n";  //TEST LINE *******************************************************************
 
     float *output = new float[n];   //Create the array to store the output
     high_resolution_clock::time_point start;
@@ -47,9 +43,9 @@ int main(int argc, char *argv[]){
     end = high_resolution_clock::now();   //captures the timestamp after scan is called
 
     duration_ms = std::chrono::duration_cast<duration<double, std::milli>> (end - start);    //comput the time elapsed in milliseconds
-    cout << "Scan function took " << duration_ms.count() << " ms\n";
-    cout << "First element of the output array: " << output[0] << "\n";
-    cout << "Last element of the output array: " << output[n-1] << "\n";
+    cout << duration_ms.count() << "\n";
+    cout << output[0] << "\n";
+    cout << output[n-1] << "\n";
 
     delete[] arr;
     delete[] output;
