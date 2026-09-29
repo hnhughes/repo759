@@ -9,7 +9,7 @@
 
 g++ scan.cpp task1.cpp -Wall -O3 -std=c++17 -o task1
 
-rm -f timeresults.txt
+rm -f results.txt
 
 DATA_FILE=task1_data.csv
 echo "n,time_ms" > "$DATA_FILE"
