@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <iostream>
 #include <random>
-#include <vector>
 #include <chrono>
 #include <ratio>
 
@@ -46,7 +45,7 @@ int main(int argc, char *argv[]){
     duration_ms = std::chrono::duration_cast<duration<double, std::milli>> (end - start);    //comput the time elapsed in milliseconds
     cout << "Scan function took " << duration_ms.count() << " ms\n";
     cout << "First element of the output array: " << output[0] << "\n";
-    cout << "Last element of the output array: " << output[n] << "\n";
+    cout << "Last element of the output array: " << output[n-1] << "\n";
 
     delete[] arr;
     delete[] output;
