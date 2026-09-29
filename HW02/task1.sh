@@ -29,4 +29,4 @@ done
 echo "All runs complete. Data written to $DATA_FILE"
  
 # Generate the plot
-python3 plot_task1.py "$DATA_FILE" task1.pdf
+python3 task1.py "$DATA_FILE" task1.pdf
