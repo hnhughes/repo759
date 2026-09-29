@@ -9,6 +9,11 @@
 
 g++ scan.cpp task1.cpp -Wall -O3 -std=c++17 -o task1
 
+./task1
+
+module load gnu15/15.2.0
+module load R/4.5.3
+
 rm -f results.txt
 
 DATA_FILE=task1_data.csv
@@ -22,3 +27,5 @@ do
 
     echo "$n $time" >> results.txt
 done
+
+Rscript plot.R
