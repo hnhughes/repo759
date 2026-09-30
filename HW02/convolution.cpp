@@ -28,7 +28,7 @@ void convolve(const float *image, float *output, std::size_t n, const float *mas
                     else {
                         image_value = 0.0f;
                     }
-                    sum += mask[i*m*j] * image_value;   //Add to the sum for this pixel in the output
+                    sum += mask[i * m + j] * image_value;   //Add to the sum for this pixel in the output
                 }
             }
             output[x * n + y] = sum;    //Save the value of the sum into the output pixel
