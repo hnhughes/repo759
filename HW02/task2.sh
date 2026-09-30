@@ -9,4 +9,4 @@
 
 g++ convolution.cpp task2.cpp -Wall -O3 -std=c++17 -o task2
 
-./task2 2 3
+./task2 5 3
