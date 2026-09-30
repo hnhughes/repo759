@@ -10,7 +10,7 @@ plot(data$V1, data$V2,
      log="x",
      xlab="n",
      ylab="Time (ms)",
-     main="Scan Scaling Analysis",
+     main="Inclusive Scan Scaling Analysis",
      xaxt="n")
 
 axis(1, at=ticks, labels=parse(text=paste0("2^", exponents)))
