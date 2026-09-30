@@ -22,26 +22,20 @@ int main(int argc, char *argv[]){
     //Creating the image matrix
     std::uniform_real_distribution<float> dist_n(-10.0f, 10.0f);    //set the distribution for the numbers to be generated
     float *image = new float[n*n];  //allocated an array of n*n floats at runtime
-    std::cout<< "[";                               //TESTING ************************************************************
     for (int x=0; x<n; x++){
         for (int y=0; y<n; y++){
             image[x * n + y] = dist_n(gen);
-            std::cout << image[x * n + y] << " "; //TESTING ************************************************************
         }
     }
-    std::cout<< "]\n";                               //TESTING ************************************************************
  
     //Creating the mask matrix
     std::uniform_real_distribution<float> dist_m(-1.0f, 1.0f);    //set the distribution for the numbers to be generated
     float *mask = new float[m*m];  //allocated an array of n*n floats at runtime
-    std::cout<< "[";                               //TESTING ************************************************************
     for (int i=0; i<m; i++){
         for (int j=0; j<m; j++){
             mask[i * m + j] = dist_m(gen);
-            std::cout << mask[i * m + j] << " "; //TESTING ************************************************************
         }
     }
-    std::cout<< "]\n";                               //TESTING ************************************************************
 
     //Apply mask to image using the convolve function
     float *output = new float[n*n];
