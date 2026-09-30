@@ -2,7 +2,7 @@ data <- read.table("results.txt")
 
 pdf("task1.pdf")
 
-exponents <- 10:30
+exponents <- sequence(10:30,by=2)
 ticks <- 2^exponents
 
 plot(data$V1, data$V2,
