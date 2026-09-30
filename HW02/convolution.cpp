@@ -1,6 +1,6 @@
 #include "convolution.h"
 
-void convolution(const float *image, float *output, std::size_t n, const float *mask, std::size_t m){
+void convolve(const float *image, float *output, std::size_t n, const float *mask, std::size_t m){
     using std::size_t;
     const size_t mask_shift = m / 2;    //Since the shift will need to be computed every inner loop do it once here instead
 

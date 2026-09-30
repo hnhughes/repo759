@@ -3,6 +3,7 @@
 #include <iostream>
 #include <random>
 #include <chrono>
+#include <ratio>
 
 int main(int argc, char *argv[]){
     if (argc != 3) {
@@ -44,15 +45,13 @@ int main(int argc, char *argv[]){
 
     //Apply mask to image using the convolve function
     float *output = new float[n*n];
-    using std::chrono::high_resolution_clock;   //setup for the timing
-    using std::chrono::duration; 
-    high_resolution_clock::time_point start;
-    high_resolution_clock::time_point end;
-    duration<double, std::milli> duration_ms;
+    std::chrono::high_resolution_clock::time_point start;
+    std::chrono::high_resolution_clock::time_point end;
+    std::chrono::duration<double, std::milli> duration_ms{};
 
-    start = high_resolution_clock::now(); //captures the timestamp before convolve is called
+    start = std::chrono::high_resolution_clock::now(); //captures the timestamp before convolve is called
     convolve(image, output, static_cast<std::size_t>(n), mask, static_cast<std::size_t>(m));
-    end = high_resolution_clock::now();   //captures the timestamp after convolve is called
+    end = std::chrono::high_resolution_clock::now();   //captures the timestamp after convolve is called
     
     //Printed outputs
     std::cout << duration_ms.count() << "\n";   //Print out the time taken for the convolve function in milliseconds
