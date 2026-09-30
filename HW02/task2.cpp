@@ -47,7 +47,7 @@ int main(int argc, char *argv[]){
     float *output = new float[n*n];
     std::chrono::high_resolution_clock::time_point start;
     std::chrono::high_resolution_clock::time_point end;
-    std::chrono::duration<double, std::milli> duration_ms{};
+    std::chrono::duration<double, std::milli> duration_ms;
 
     start = std::chrono::high_resolution_clock::now(); //captures the timestamp before convolve is called
     convolve(image, output, static_cast<std::size_t>(n), mask, static_cast<std::size_t>(m));

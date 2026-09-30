@@ -1,9 +1,11 @@
 #include "convolution.h"
+#include <iostream> //TESTING ************************************************************
 
 void convolve(const float *image, float *output, std::size_t n, const float *mask, std::size_t m){
     using std::size_t;
     const size_t mask_shift = m / 2;    //Since the shift will need to be computed every inner loop do it once here instead
 
+    std::cout << "OUTPUT ARRAY: [";
     for (size_t x=0; x<n; x++){         //Loops through the rows in image 
         for (size_t y=0; y<n; y++){     //Loops through the pixels in the image
             float sum = 0.0f;           //Intialize the sum to be calculated to 0 so it doesn't carry over between pixels
@@ -30,6 +32,9 @@ void convolve(const float *image, float *output, std::size_t n, const float *mas
                 }
             }
             output[x * n + y] = sum;    //Save the value of the sum into the output pixel
+            std::cout << output[x * n + y] << " ";  //TESTING ************************************************************
         }
+        std::cout << "\n";  //TESTING ************************************************************
     }
+    std::cout << "]\n";     //TESTING ************************************************************
 }
