@@ -2,14 +2,19 @@
 #include <cstdlib>
 #include <iostream>
 #include <random>
+#include <chrono>
 
 int main(int argc, char *argv[]){
     if (argc != 3) {
         std::cerr << "Usage: " << argv[0] << " <n>\n";
         return 1;
     }
+
+    //Reading the arguments
     int n = std::atoi(argv[1]);
     int m = std::atoi(argv[2]);
+
+    //Setting up the random generator
     std::random_device rd;
     std::mt19937 gen(rd()); //call the random device with rd and store it in gen using mt19937 to generate the rand
 
@@ -24,10 +29,7 @@ int main(int argc, char *argv[]){
         }
     }
     std::cout<< "]\n";                               //TESTING ************************************************************
-    //Create an m by m mask matrix stored in 1D in row-major order
-        //matrix should contain random float numbers
-        //Numbers should be between -1.0 and 1.0 
-        //m should be read as the second command line argument
+ 
     //Creating the mask matrix
     std::uniform_real_distribution<float> dist_m(-1.0f, 1.0f);    //set the distribution for the numbers to be generated
     float *mask = new float[m*m];  //allocated an array of n*n floats at runtime
@@ -39,11 +41,27 @@ int main(int argc, char *argv[]){
         }
     }
     std::cout<< "]\n";                               //TESTING ************************************************************
-//*******************************************************************************
+
     //Apply mask to image using the convolve function
-    //Print out the time taken for the convolve function in milliseconds
-    //Prints the first element of the output array
-    //Prints the last element of the convolve array
-    //Deallocated memory when necessary 
+    float *output = new float[n*n];
+    using std::chrono::high_resolution_clock;   //setup for the timing
+    using std::chrono::duration; 
+    high_resolution_clock::time_point start;
+    high_resolution_clock::time_point end;
+    duration<double, std::milli> duration_ms;
+
+    start = high_resolution_clock::now(); //captures the timestamp before convolve is called
+    convolve(image, output, static_cast<std::size_t>(n), mask, static_cast<std::size_t>(m));
+    end = high_resolution_clock::now();   //captures the timestamp after convolve is called
+    
+    //Printed outputs
+    std::cout << duration_ms.count() << "\n";   //Print out the time taken for the convolve function in milliseconds
+    std::cout << output[0] << "\n";             //Prints the first element of the output array
+    std::cout << output[(n*n)-1] << "\n";       //Prints the last element of the convolve array
+    
+    //Deallocate memory 
+    delete[] image;
+    delete[] output;
+    delete[] mask;
     return 0;
 }
