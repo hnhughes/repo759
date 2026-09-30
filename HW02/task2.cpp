@@ -52,6 +52,7 @@ int main(int argc, char *argv[]){
     start = std::chrono::high_resolution_clock::now(); //captures the timestamp before convolve is called
     convolve(image, output, static_cast<std::size_t>(n), mask, static_cast<std::size_t>(m));
     end = std::chrono::high_resolution_clock::now();   //captures the timestamp after convolve is called
+    duration_ms = std::chrono::duration_cast<std::chrono::duration<double, std::milli>> (end - start);    //comput the time elapsed in milliseconds
     
     //Printed outputs
     std::cout << duration_ms.count() << "\n";   //Print out the time taken for the convolve function in milliseconds
