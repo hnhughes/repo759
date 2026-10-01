@@ -43,6 +43,12 @@ int main(int argc, char *argv[]){
     std::cout << duration_ms.count() << "\n";               //Print out the duration
     std::cout << C[n * n - 1] << "\n";                      //Print out the last element of C
     duration_ms = std::chrono::duration<double, std::milli>(0); //Reset the duration to 0 to calculate the next duration
+    //Reset the output matrix C to 0
+    for (unsigned int i=0; i<n; i++){
+        for (unsigned int j=0; j<n; j++){
+            C[i * n + j] = 0.0;   //Initialize all values in C to 0
+        }
+    }
 
     //mmul2
     start = std::chrono::high_resolution_clock::now();      //start time for mmul1
@@ -52,6 +58,12 @@ int main(int argc, char *argv[]){
     std::cout << duration_ms.count() << "\n";               //Print out the duration
     std::cout << C[n * n - 1] << "\n";                      //Print out the last element of C
     duration_ms = std::chrono::duration<double, std::milli>(0); //Reset the duration to 0 to calculate the next duration
+    //Reset the output matrix C to 0
+    for (unsigned int i=0; i<n; i++){
+        for (unsigned int j=0; j<n; j++){
+            C[i * n + j] = 0.0;   //Initialize all values in C to 0
+        }
+    }
 
     //mmul3
     start = std::chrono::high_resolution_clock::now();      //start time for mmul1
@@ -61,6 +73,12 @@ int main(int argc, char *argv[]){
     std::cout << duration_ms.count() << "\n";               //Print out the duration
     std::cout << C[n * n - 1] << "\n";                      //Print out the last element of C
     duration_ms = std::chrono::duration<double, std::milli>(0); //Reset the duration to 0 to calculate the next duration
+    //Reset the output matrix C to 0
+    for (unsigned int i=0; i<n; i++){
+        for (unsigned int j=0; j<n; j++){
+            C[i * n + j] = 0.0;   //Initialize all values in C to 0
+        }
+    }
 
     //mmul4
     start = std::chrono::high_resolution_clock::now();      //start time for mmul1
