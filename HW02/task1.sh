@@ -9,7 +9,7 @@
 
 g++ scan.cpp task1.cpp -Wall -O3 -std=c++17 -o task1
 
-./task1 10
+./task1 10000
 
 # module load gnu15/15.2.0
 # module load R/4.5.3

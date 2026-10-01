@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[]){
     //Declare variables
-    unsigned int n = 1500;
+    unsigned int n = 2500;
     double* A = new double[n*n];
     double* B = new double[n*n];
     double* C = new double[n*n];
@@ -87,7 +87,6 @@ int main(int argc, char *argv[]){
     duration_ms = std::chrono::duration_cast<std::chrono::duration<double, std::milli>> (end - start);  //Calculate the duration
     std::cout << duration_ms.count() << "\n";               //Print out the duration
     std::cout << C[n * n - 1] << "\n";                      //Print out the last element of C
-    duration_ms = std::chrono::duration<double, std::milli>(0); //Reset the duration to 0 to calculate the next duration
     
     delete [] A;
     delete [] B;
