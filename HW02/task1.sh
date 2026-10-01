@@ -11,21 +11,21 @@ g++ scan.cpp task1.cpp -Wall -O3 -std=c++17 -o task1
 
 ./task1 10
 
-module load gnu15/15.2.0
-module load R/4.5.3
+# module load gnu15/15.2.0
+# module load R/4.5.3
 
-rm -f results.txt
+# rm -f results.txt
 
-DATA_FILE=task1_data.csv
-echo "n,time_ms" > "$DATA_FILE"
+# DATA_FILE=task1_data.csv
+# echo "n,time_ms" > "$DATA_FILE"
  
-for exponent in {10..30}
-do
-    n=$((2**exponent))
+# for exponent in {10..30}
+# do
+#     n=$((2**exponent))
 
-    time=$(./task1 $n | head -n 1)
+#     time=$(./task1 $n | head -n 1)
 
-    echo "$n $time" >> results.txt
-done
+#     echo "$n $time" >> results.txt
+# done
 
-Rscript plot.R
+# Rscript plot.R
