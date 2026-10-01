@@ -30,8 +30,8 @@ int main(int argc, char *argv[]){
     }
 
     //Generate vectors for A and B
-    std::vector<double> Av(A, A + n);
-    std::vector<double> Bv(B, B + n);
+    std::vector<double> Av(A, A + n*n);
+    std::vector<double> Bv(B, B + n*n);
 
     std::cout << n << "\n"; //Pint out the number of rows
 
@@ -71,5 +71,8 @@ int main(int argc, char *argv[]){
     std::cout << C[n * n - 1] << "\n";                      //Print out the last element of C
     duration_ms = std::chrono::duration<double, std::milli>(0); //Reset the duration to 0 to calculate the next duration
     
+    delete [] A;
+    delete [] B;
+    delete [] C;
     return 0;
 }
