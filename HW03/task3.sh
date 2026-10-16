@@ -11,11 +11,10 @@
 g++ task3.cpp msort.cpp -Wall -O3 -std=c++17 -o task3 -fopenmp
 
 n=1000000
-t=8
+ts=64
 
-for exponent in {1..10}
+for t in {1..20}
 do
-    ts=$((2**exponent))
     ./task3 $n $t $ts
 done
 
