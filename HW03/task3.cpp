@@ -24,7 +24,7 @@ int main(int argc, char *argv[]){
     //Setting up the random generator
     std::random_device rd;
     std::mt19937 gen(rd()); //call the random device with rd and store it in gen using mt19937 to generate the rand
-    std::uniform_real_distribution<int> dist_n(-1000, 1000);
+    std::uniform_int_distribution<int> dist(-1000, 1000);
 
     //setup timing
     std::chrono::high_resolution_clock::time_point start;
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]){
     std::chrono::duration<double, std::milli> duration_ms;
 
     for (int i=0; i<n; i++){
-        arr[i] = dist_m(gen);
+        arr[i] = dist(gen);
     }
 
     start = std::chrono::high_resolution_clock::now();
