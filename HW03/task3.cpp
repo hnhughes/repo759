@@ -19,7 +19,6 @@ int main(int argc, char *argv[]){
 
     //intializing variables
     int* arr = new int[n];
-    omp_set_num_threads(t);
 
     //Setting up the random generator
     std::random_device rd;
@@ -36,7 +35,13 @@ int main(int argc, char *argv[]){
     }
 
     start = std::chrono::high_resolution_clock::now();
-    msort(arr, static_cast<std::size_t>(n), static_cast<std::size_t>(threshold));
+    #pragma omp parallel num_threads (t)
+    {
+        #pragma omp single
+            {
+            msort(arr, static_cast<std::size_t>(n), static_cast<std::size_t>(threshold));
+            }
+    }
     end = std::chrono::high_resolution_clock::now();   //captures the timestamp after convolve is called
     duration_ms = std::chrono::duration_cast<std::chrono::duration<double, std::milli>> (end - start);    //comput the time elapsed in milliseconds
 
