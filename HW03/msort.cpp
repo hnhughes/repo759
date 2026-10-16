@@ -43,11 +43,11 @@ void msort(int* arr, const std::size_t n, const std::size_t threshold){
         return;
     }
 
-    #pragma omp task firstprivate(arr, mid, threshold)
+    #pragma omp task firstprivate(arr, n, threshold)
     {
     msort(arr, n/2, threshold);
     }
-    #pragma omp task firstprivate(arr, mid, threshold)
+    #pragma omp task firstprivate(arr, n, threshold)
     {
     msort(arr + n/2, n - n/2, threshold);
     }
