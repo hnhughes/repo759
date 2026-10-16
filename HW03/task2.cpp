@@ -53,8 +53,8 @@ int main(int argc, char *argv[]){
     duration_ms = std::chrono::duration_cast<std::chrono::duration<double, std::milli>> (end - start);    //comput the time elapsed in milliseconds
     
     //Printed outputs
-    std::cout << output[0] << "\n";             //Prints the first element of the output array
-    std::cout << output[(n*n)-1] << "\n";       //Prints the last element of the convolve array
+    //std::cout << output[0] << "\n";             //Prints the first element of the output array
+    //std::cout << output[(n*n)-1] << "\n";       //Prints the last element of the convolve array
     std::cout << duration_ms.count() << "\n";   //Print out the time taken for the convolve function in milliseconds
     
     //Deallocate memory 

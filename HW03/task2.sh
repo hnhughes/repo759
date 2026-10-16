@@ -12,6 +12,6 @@ g++ task2.cpp convolution.cpp -Wall -O3 -std=c++17 -o task2 -fopenmp
 
 for t in {1..20}
 do
-    ./task2 10 $t
+    ./task2 1024 $t
 done
 
