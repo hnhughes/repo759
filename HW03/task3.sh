@@ -10,11 +10,4 @@
 
 g++ task3.cpp msort.cpp -Wall -O3 -std=c++17 -o task3 -fopenmp
 
-n=1000000
-ts=64
-
-for t in {1..20}
-do
-    ./task3 $n $t $ts
-done
-
+./task3 100 2 5

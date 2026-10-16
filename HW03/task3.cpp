@@ -46,9 +46,12 @@ int main(int argc, char *argv[]){
     duration_ms = std::chrono::duration_cast<std::chrono::duration<double, std::milli>> (end - start);    //comput the time elapsed in milliseconds
 
     //Printed outputs
+    for (int i = 0; i<n; i++){
+        std::cout << arr[i] << "\n";
+    }
     //std::cout << arr[0] << "\n";                //Prints the first element of the array
     //std::cout << arr[n-1] << "\n";              //Prints the last element of the array
-    std::cout << duration_ms.count() << "\n";   //Print out the time taken for the function in milliseconds
+    //std::cout << duration_ms.count() << "\n";   //Print out the time taken for the function in milliseconds
 
     delete[] arr;
 }
