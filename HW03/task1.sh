@@ -9,4 +9,18 @@
 
 g++ task1.cpp matmul.cpp -Wall -O3 -std=c++17 -o task1 -fopenmp
 
-./task1 1024 5
+module load gnu15/15.2.0
+module load R/4.5.3
+
+n=1024
+
+DATA_FILE=task1_data.txt
+echo "t time_ms" > "$DATA_FILE"
+
+for t in {1..20}
+    time=$(./task1 $n $t | tail -n 1)
+    echo "$t,$time" >> "$DATA_FILE"
+done
+
+Rscript plot.R
+

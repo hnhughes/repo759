@@ -30,14 +30,12 @@ int main (int argc, char *argv[]){
         for (unsigned int j=0; j<n; j++){
             A[i * n + j] = dist(gen);
             B[i * n + j] = dist(gen);
-            C[i * n + j] = 0.0;   //Initialize all values in C to 0
+            C[i * n + j] = 0.0f;   //Initialize all values in C to 0
         }
     }
 
     start = std::chrono::high_resolution_clock::now();      //start time for mmul
-    {
     mmul(A, B, C, n);
-    }
     end = std::chrono::high_resolution_clock::now();    //End time for mmul
     duration_ms = std::chrono::duration_cast<std::chrono::duration<double, std::milli>> (end - start);  //Calculate the duration
 
