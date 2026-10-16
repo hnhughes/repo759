@@ -10,5 +10,11 @@
 
 g++ task3.cpp msort.cpp -Wall -O3 -std=c++17 -o task3 -fopenmp
 
-./task3 10 1 2
+./task3 1000000 8 2 
+
+for exponent in {1..10}
+do
+    ts=$((2**exponent))
+
+done
 
