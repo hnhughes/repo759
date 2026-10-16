@@ -18,7 +18,7 @@ int main (int argc, char *argv[]){
     //Setting up the random generator
     std::random_device rd;
     std::mt19937 gen(rd()); //call the random device with rd and store it in gen using mt19937 to generate the rand
-    std::uniform_real_distribution<float> dist(-3.0, 3.0);    //set the distribution for the numbers to be generated
+    std::uniform_real_distribution<float> dist(-3.0f, 3.0f);    //set the distribution for the numbers to be generated
 
     //Setup for timing
     std::chrono::high_resolution_clock::time_point start;
