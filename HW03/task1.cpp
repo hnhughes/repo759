@@ -40,8 +40,8 @@ int main (int argc, char *argv[]){
     duration_ms = std::chrono::duration_cast<std::chrono::duration<double, std::milli>> (end - start);  //Calculate the duration
 
     //Print out the first element of C
-    std::cout << C[0] << "\n";
-    std::cout << C[n * n - 1] << "\n";
+    //std::cout << C[0] << "\n";
+    //std::cout << C[n * n - 1] << "\n";
     std::cout << duration_ms.count() << "\n";   //Print out the duration
 
     delete[] A;
