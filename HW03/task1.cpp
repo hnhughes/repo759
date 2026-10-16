@@ -8,7 +8,7 @@ int main (int argc, char *argv[]){
     //Reading the arguments
     unsigned int n = std::atoi(argv[1]);
     int t = std::atoi(argv[2]);
-    omp_set_num_threads(t)
+    omp_set_num_threads(t);
     
     //Declare variables
     float* A = new float[n*n];
