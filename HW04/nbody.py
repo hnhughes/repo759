@@ -23,8 +23,8 @@ def getAcc(pos, mass, G, softening):
     a is N x 3 matrix of accelerations
     """
 
-    N = pos.shape[0]
-    a = np.zeros((N, 3))
+    N = pos.shape[0]    #get the nuber of rows in the position matrix and store it in N?
+    a = np.zeros((N, 3))    #Initialize the acceleration matrix to zero?
 
     for i in range(N):
         for j in range(N):
