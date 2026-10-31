@@ -19,7 +19,7 @@ const double board_size = 4.0; // Size of the board
 
 // Function to calculate acceleration due to gravity
 void getAcc(const double pos[][3], const double mass[], double acc[][3], int N) {
-    #pragma omp parallel for dynamic (static, 2)
+    #pragma omp parallel for (dynamic, 2)
     for (int i=0; i<N; i++){
         acc[i][0] = 0.0;
         acc[i][1] = 0.0;
@@ -118,7 +118,7 @@ int main(int argc, char *argv[]) {
     // Convert to Center-of-Mass frame
     double velCM[3] = {0.0, 0.0, 0.0};
     double totalMass = 0.0;
-    #pragma omp parallel for dynamic (static, 2)
+    #pragma omp parallel for (dynamic, 2)
     for (int i = 0; i < N; i++) {
         #pragma omp atomic
         velCM[0] += vel[i][0] * mass[i];
@@ -134,7 +134,7 @@ int main(int argc, char *argv[]) {
     velCM[1] /= totalMass;
     velCM[2] /= totalMass;
 
-    #pragma omp parallel for dynamic (static, 2)
+    #pragma omp parallel for (dynamic, 2)
     for (int i = 0; i < N; i++) {
         vel[i][0] -= velCM[0];
         vel[i][1] -= velCM[1];
@@ -149,7 +149,7 @@ int main(int argc, char *argv[]) {
 
     // Main simulation loop
     for (int step = 0; step < Nt; step++) {
-        #pragma omp parallel for dynamic (static, 2)
+        #pragma omp parallel for (dynamic, 2)
         for (int i = 0; i < N; i++) {
             // TODO: (1/2) kick
             vel[i][0] += acc[i][0] * dt / 2.0;
@@ -175,7 +175,7 @@ int main(int argc, char *argv[]) {
         // Update accelerations
         getAcc(pos, mass, acc, N);
 
-        #pragma omp parallel for dynamic (static, 2)
+        #pragma omp parallel for (dynamic, 2)
         for (int i = 0; i < N; i++) {
             // TODO: (1/2) kick
             vel[i][0] += acc[i][0] * dt / 2.0;
