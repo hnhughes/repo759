@@ -10,4 +10,7 @@
 
 g++ task3.cpp -Wall -O3 -std=c++17 -o task3 -fopenmp
 
-./task3 100 100.0 20
+for num_threads in {1..8}
+do
+    ./task3 100 100.0 $num_threads
+done
