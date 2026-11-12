@@ -13,8 +13,10 @@
 //Prints (from the host) the 16 values stored in the host array separated by a single space each.
 int main (int argc, char* argv[]) {
     //From the host, allocates an array of 16 ints on the device called dA
-    cudaMalloc((void**) pdA, sizeof(int) * arraySize);
-    int *dA[16];
+    const int arraySize = 16;
+    int dA
+    cudaMalloc((void**) dA, sizeof(int) * arraySize);
+    cudaMemset(dA, 0, arraySize * sizeof(int));
     const int arraySize = 8;
     int *hostArray, *devArray;
     for (int i = 0; i < arraySize; i++){

@@ -8,8 +8,8 @@ __global__ void factorial(){
     int product = 1;
     for (int i = 1; i < 9; i++){
         product = product * i;
-        std::printf("%d!=%d\n", i, product);
     }
+    std::printf("%d!=%d\n", i, product);
 }
 
 int main (int argc, char* argv[]) {
