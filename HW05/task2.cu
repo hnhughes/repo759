@@ -1,4 +1,6 @@
-
+#include <cuda.h>
+#include <iostream>
+#include <cstdio>
 
 //Launches a kernel with 2 blocks, each block having 8 threads.
 //Each thread computes ax+y and writes the result in one distinct entry of the dA array. Here,
@@ -11,6 +13,7 @@
 //Prints (from the host) the 16 values stored in the host array separated by a single space each.
 int main (int argc, char* argv[]) {
     //From the host, allocates an array of 16 ints on the device called dA
+    cudaMalloc((void**) pdA, sizeof(int) * arraySize);
     int *dA[16];
     const int arraySize = 8;
     int *hostArray, *devArray;
