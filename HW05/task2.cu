@@ -14,7 +14,7 @@
 int main (int argc, char* argv[]) {
     //From the host, allocates an array of 16 ints on the device called dA
     const int arraySize = 16;
-    int dA
+    int *hA, *dA;
     cudaMalloc((void**) dA, sizeof(int) * arraySize);
     cudaMemset(dA, 0, arraySize * sizeof(int));
     const int arraySize = 8;
