@@ -9,7 +9,7 @@ __global__ void factorial(){
     for (int i = 1; i < threadIdx.x+1; i++){
         product = product * i;
     }
-    std::printf("%d!=%d\n", i, product);
+    std::printf("%d!=%d\n", threadIdx.x, product);
 }
 
 int main (int argc, char* argv[]) {
