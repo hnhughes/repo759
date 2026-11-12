@@ -7,6 +7,7 @@
 #SBATCH -t 0-00:30:00
 #SBATCH -c 1
 #SBATCH --mem=16G
+#SBATCH --gpus
 #SBATCH --gpus-per-task=1
 
 nvcc task1.cu -Xcompiler -O3 -Xcompiler -Wall -Xptxas -O3 -std=c++17 -o task1
