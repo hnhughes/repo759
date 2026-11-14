@@ -34,7 +34,7 @@ int main (int argc, char* argv[]) {
     }
 
     //MAKE SURE TO DEALLOCATE THE MEMORY WHEN DONE
-    cudaFree(hA);
+    delete[] hA;
     cudaFree(dA);
 
     return 0;
