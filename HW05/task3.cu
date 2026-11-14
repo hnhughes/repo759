@@ -36,12 +36,12 @@ int main(int argc, char *argv[]){
     cudaEventCreate(&stopEvent);
 
     //Need to pass a, b and n to the kernel
-    cudaMalloc((void**)&devA, sizeof(int) * n);
-    cudaMalloc((void**)&devB, sizeof(int) * n);
-    cudaMemcpy(devA, a, n * sizeof(int), cudaMemcpyHostToDevice);
-    cudaMemcpy(devB, b, n * sizeof(int), cudaMemcpyHostToDevice);
+    cudaMalloc((void**)&devA, sizeof(float) * n);
+    cudaMalloc((void**)&devB, sizeof(float) * n);
+    cudaMemcpy(devA, a, n * sizeof(float), cudaMemcpyHostToDevice);
+    cudaMemcpy(devB, b, n * sizeof(float), cudaMemcpyHostToDevice);
 
-    const int threadsPerBlock = 16;
+    const int threadsPerBlock = 512;
     const int blocksPerGrid = (n + threadsPerBlock - 1)/threadsPerBlock;
     cudaEventRecord(startEvent, 0);
     vscale<<<blocksPerGrid, threadsPerBlock>>>(devA, devB, n);
