@@ -44,7 +44,7 @@ int main(int argc, char *argv[]){
     cudaMemcpy(b, devB, sizeof(int) * n, cudaMemcpyDeviceToHost);
 
     for (int j=0; j<n j++){
-        std::printf("A:%f B:%f\n", a[i], b[i]);
+        std::printf("A:%f B:%f\n", a[j], b[j]);
     }
 
     delete[] a;
