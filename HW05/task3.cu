@@ -37,7 +37,7 @@ int main(int argc, char *argv[]){
     cudaMemcpy(devB, b, n * sizeof(int), cudaMemcpyHostToDevice);
 
     const int threadsPerBlock = 512;
-    const int blocksPerGrid = (n + threadsPerBlock – 1)/threadsPerBlock;
+    const int blocksPerGrid = (n + threadsPerBlock - 1)/threadsPerBlock;
     vscale<<<blocksPerGrid, threadsPerBlock>>>(devA, devB, n);
 
     cudaMemcpy(b, devB, sizeof(int) * n, cudaMemcpyDeviceToHost);
