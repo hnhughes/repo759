@@ -5,7 +5,7 @@
 
 __global__ void slope(int* arr, int numa)
 {
-    arr[ threadIdx.x + blockIdx.x * (threadIdx.x + 8)] = numa * threadIdx.x + blockIdx.x;
+    arr[ threadIdx.x + blockIdx.x * 8] = numa * threadIdx.x + blockIdx.x;
 }
 
 int main (int argc, char* argv[]) {
