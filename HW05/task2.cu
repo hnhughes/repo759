@@ -20,7 +20,7 @@ int main (int argc, char* argv[]) {
     int a = dist(gen);
 
     //Allocate the memory
-    cudaMalloc((void**) dA, sizeof(int) * arraySize);
+    cudaMalloc((void**)&dA, sizeof(int) * arraySize);
     cudaMemset(dA, 0, arraySize * sizeof(int));
 
     //Invoke the kernel with a
@@ -37,8 +37,8 @@ int main (int argc, char* argv[]) {
     }
 
     //MAKE SURE TO DEALLOCATE THE MEMORY WHEN DONE
-    cleanupHost(hA);
-    cleanupDevice(dA);
+    cudaFree(hA);
+    cudaFree(dA);
 
     return 0;
 }
