@@ -28,6 +28,7 @@ int main(int argc, char *argv[]){
     for (int i=0; i<n; i++){
         a[i] = dist_a(gen);
         b[i] = dist_b(gen);
+        std::printf("%f\n", b[i]);
     }
 
     //Need to pass a, b and n to the kernel
@@ -41,6 +42,10 @@ int main(int argc, char *argv[]){
     vscale<<<blocksPerGrid, threadsPerBlock>>>(devA, devB, n);
 
     cudaMemcpy(b, devB, sizeof(int) * n, cudaMemcpyDeviceToHost);
+
+    for (int j=0; j<n j++){
+        std::printf("A:%f B:%f\n", a[i], b[i]);
+    }
 
     delete[] a;
     delete[] b;
