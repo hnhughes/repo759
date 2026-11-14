@@ -6,9 +6,10 @@
 
 __global__ void factorial(){
     int product = 1;
-    for (int i = 1; i < threadIdx.x+1; i++){
-        product = product * i;
-    }
+    //for (int i = 1; i < threadIdx.x+1; i++){
+       // product = product * i;
+   //}
+    int product = (threadIdx.x + 1) * product;
     std::printf("%d!=%d\n", threadIdx.x+1, product);
 }
 

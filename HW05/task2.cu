@@ -27,7 +27,7 @@ int main (int argc, char* argv[]) {
     slope<<<2,8>>>(dA, a);
 
     //Send data from the CPU to the GPU
-    factorial<<<1, 8>>>(devArray, arraySize);
+    factorial<<<1, 8>>>(dA, arraySize);
 
     //Copy the device array to the host array
     cudaMemcpy(hA, dA, sizeof(int) * arraySize, cudaMemcpyDeviceToHost);
