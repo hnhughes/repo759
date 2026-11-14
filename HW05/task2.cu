@@ -5,7 +5,7 @@
 
 __global__ void slope(int* arr, int numa)
 {
-    arr[ threadIdx.x + blockIdx.x * threadIdx.x] = numa * threadIdx.x + blockIdx.x;
+    arr[ threadIdx.x + blockIdx.x * (threadIdx.x + 8)] = numa * threadIdx.x + blockIdx.x;
 }
 
 int main (int argc, char* argv[]) {
@@ -16,7 +16,7 @@ int main (int argc, char* argv[]) {
     //Generate the random number to send to the kernel
     std::random_device rd;
     std::mt19937 gen(rd()); //call the random device with rd and store it in gen using mt19937 to generate the rand
-    std::uniform_int_distribution<int> dist(-10, 10);
+    std::uniform_int_distribution<int> dist(1, 10);
     int a = dist(gen);
 
     //Allocate the memory
