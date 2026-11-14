@@ -28,8 +28,12 @@ int main(int argc, char *argv[]){
     for (int i=0; i<n; i++){
         a[i] = dist_a(gen);
         b[i] = dist_b(gen);
-        std::printf("%f\n", b[i]);
     }
+
+    //Declarations for time measurements
+    cudaEvent_t startEvent, stopEvent;
+    cudaEventCreate(&startEvent);
+    cudaEventCreate(&stopEvent);
 
     //Need to pass a, b and n to the kernel
     cudaMalloc((void**)&devA, sizeof(int) * n);
@@ -39,18 +43,25 @@ int main(int argc, char *argv[]){
 
     const int threadsPerBlock = 512;
     const int blocksPerGrid = (n + threadsPerBlock - 1)/threadsPerBlock;
+    cudaEventRecord(startEvent, 0);
     vscale<<<blocksPerGrid, threadsPerBlock>>>(devA, devB, n);
+    cudaEventRecord(stopEvent, 0);
+    cudaEventSynchronize(stopEvent);
+    float elapsedTime;
+    cudaEventElapsedTime(&elapsedTime, startEvent, stopEvent);
 
     cudaMemcpy(b, devB, sizeof(int) * n, cudaMemcpyDeviceToHost);
 
-    for (int j=0; j<n; j++){
-        std::printf("A:%f B:%f\n", a[j], b[j]);
-    }
+    std::cout << elapsedTime << "\n";
+    std::cout << b[0] << "\n";
+    std::cout << b[n-1] << "\n";
 
     delete[] a;
     delete[] b;
     cudaFree(devA);
     cudaFree(devB);
+    cudaEventDestroy(startEvent);
+    cudaEventDestroy(stopEvent);
 
     return 0;
 }
