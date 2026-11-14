@@ -14,4 +14,6 @@ module load nvidia/cuda/11.8.0 gcc/.11.3.0_cuda
 
 nvcc task3.cu vscale.cu -Xcompiler -O3 -Xcompiler -Wall -Xptxas -O3 -std=c++17 -o task3
 
-./task3 10
+for i in {10..29}; do
+    echo "$i $(./task3 $((2**i)) | head -n 1)"
+done
